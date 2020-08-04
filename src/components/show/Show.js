@@ -1,5 +1,4 @@
 import React from "react";
-import './Show.css';
 
 class Show extends React.Component {
     constructor({id, image, name, rating, status}) {
@@ -13,8 +12,8 @@ class Show extends React.Component {
 
     render() {
         return(
-            <li class="show-list-item" key={this.key}>
-                <div className="show">
+            <li class="show__list-item" key={this.key}>
+                <div className="show__container">
                     <div className="show-image">
                         <img src={this.image} alt={this.name} title={this.name} />
                     </div>

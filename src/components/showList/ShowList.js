@@ -1,6 +1,5 @@
 import React from "react";
 import Show from "../show/Show.js";
-import './ShowList.css';
 
 const altImage = 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV-SHOW'
 const altRating = 'no rating'
@@ -13,7 +12,7 @@ class ShowList extends React.Component {
     render() {
         console.log(this.props);
         return(
-            <ul class="show-list">
+            <ul class="show__list">
                 {this.props.showList.map((item) =>
                 <Show
                     id={item.show.id}

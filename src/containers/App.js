@@ -1,5 +1,5 @@
 import React from "react";
-import './App.css';
+import '../scss/main.scss';
 import ShowList from '../components/showList/ShowList.js';
 import Filter from '../components/filter/Filter.js';
 
