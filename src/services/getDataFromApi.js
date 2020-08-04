@@ -7,7 +7,7 @@ const altRating = 'no rating'
 
 
 const getDataFromApi = (inputName) => {
-  return fetch(API_DATA + '?q=${inputName)')
+  return fetch(API_DATA + '?q=girls') //girls = ${inputName}
   .then((response) => response.json())
   .then((data) => {
     console.log(data);
