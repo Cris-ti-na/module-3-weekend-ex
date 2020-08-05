@@ -1,21 +1,18 @@
 import React from "react";
-import '../scss/main.scss';
-import ShowList from '../components/showList/ShowList.js';
-import Filter from '../components/filter/Filter.js';
+import "../scss/main.scss";
+import ShowList from "../components/showList/ShowList.js";
+import Filter from "../components/filter/Filter.js";
 
 //SHOWLIST
-const API_DATA = 'http://api.tvmaze.com/search/shows'
+const API_DATA = "http://api.tvmaze.com/search/shows";
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
       showList: [],
-      inputText: '',
+      inputText: "",
     };
-
-    this.getDataFromApi = this.getDataFromApi.bind(this);
-    this.filterHandler = this.filterHandler.bind(this);
   }
 
   componentDidMount() {
@@ -23,36 +20,40 @@ class App extends React.Component {
   }
 
   getDataFromApi = () => {
-    return fetch(API_DATA + '?q=girls') //girls = ${inputName}
+    return fetch(API_DATA + "?q=girls") //girls = ${inputName}
       .then((response) => response.json())
       .then((responseData) => {
-        console.log(responseData);
-        this.setState({showList: responseData});
+        console.log("API Response", responseData);
+        this.setState({ showList: responseData });
       });
-  }
+  };
 
   filterHandler = (ev) => {
-    console.log(ev.currentTarget.value);
-    this.setState({inputText: ev.currentTarget.value});
-  }
+    console.log("Filter input value", ev.currentTarget.value);
+    this.setState({ inputText: ev.currentTarget.value });
+  };
 
   render() {
     const inputText = this.state.inputText;
     const unfilteredShows = this.state.showList;
-    const filteredShows = unfilteredShows.filter(serie =>
-      inputText ? serie.show.name.toLowerCase().includes(inputText.toLowerCase()) : true
+    const filteredShows = unfilteredShows.filter((serie) =>
+      inputText
+        ? serie.show.name.toLowerCase().includes(inputText.toLowerCase())
+        : true
     );
 
-    console.log(filteredShows);
+    console.log("Filtered shows", filteredShows);
 
-    return(
+    return (
       <div className="App">
         <Filter filterHandler={this.filterHandler} />
-        {unfilteredShows.length ? <ShowList showList=
-          {filteredShows ? filteredShows : unfilteredShows}
-        /> : <p>CARGANDO</p>}
+        {unfilteredShows.length ? (
+          <ShowList showList={filteredShows} />
+        ) : (
+          <p>CARGANDO</p>
+        )}
       </div>
-    )
+    );
   }
 }
 
