@@ -13,6 +13,7 @@ class ShowList extends React.Component {
         {this.props.showList.map((item) => (
           <Show
             key={item.show.id}
+            id={item.show.id}
             image={item.show.image?.original ?? altImage}
             name={item.show.name}
             rating={item.show.rating?.average ?? altRating}
