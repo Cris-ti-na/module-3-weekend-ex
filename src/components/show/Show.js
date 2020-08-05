@@ -14,8 +14,8 @@ class Show extends React.Component {
         return(
             <li class="show__list-item" key={this.key}>
                 <div className="show__container">
-                    <div className="show-image">
-                        <img src={this.image} alt={this.name} title={this.name} />
+                    <div className="show__imgdiv">
+                        <img className="show__imgdiv-img" src={this.image} alt={this.name} title={this.name} />
                     </div>
                     <header className="show-header">
                         <h2 className="show-header-title">{this.name}</h2>
