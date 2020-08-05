@@ -23,13 +23,13 @@ class App extends React.Component {
     return fetch(API_DATA + "?q=girls") //girls = ${inputName}
       .then((response) => response.json())
       .then((responseData) => {
-        console.log(responseData);
+        console.log("API Response", responseData);
         this.setState({ showList: responseData });
       });
   };
 
   filterHandler = (ev) => {
-    console.log(ev.currentTarget.value);
+    console.log("Filter input value", ev.currentTarget.value);
     this.setState({ inputText: ev.currentTarget.value });
   };
 
@@ -42,15 +42,13 @@ class App extends React.Component {
         : true
     );
 
-    console.log(filteredShows);
+    console.log("Filtered shows", filteredShows);
 
     return (
       <div className="App">
         <Filter filterHandler={this.filterHandler} />
         {unfilteredShows.length ? (
-          <ShowList
-            showList={filteredShows ? filteredShows : unfilteredShows}
-          />
+          <ShowList showList={filteredShows} />
         ) : (
           <p>CARGANDO</p>
         )}
